@@ -10,8 +10,7 @@ protected:
 public:
 	TList() :pFirst(NULL), len(0), pLast(NULL), pStop(NULL), pCurr(NULL), pPrev(NULL) {}
 
-	TList(const TList& theList) : TList()
-	{
+	TList(const TList& theList) : TList() {
 		
 	}
 

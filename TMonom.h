@@ -2,10 +2,10 @@
 #include <iostream>
 
 class TMonom {
+public:
 	double coef;
 	int x, y, z;
 
-public:
 	TMonom(int x, int y, int z, double coef = 1) : x(x), y(y), z(z), coef(coef) {}
 
 	TMonom& operator+(const TMonom& m) const {

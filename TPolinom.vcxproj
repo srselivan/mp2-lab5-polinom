@@ -140,11 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="THeadList.cpp" />
     <ClCompile Include="TList.cpp" />
     <ClCompile Include="TMonom.cpp" />
     <ClCompile Include="TNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="THeadList.h" />
     <ClInclude Include="TList.h" />
     <ClInclude Include="TMonom.h" />
     <ClInclude Include="TNode.h" />

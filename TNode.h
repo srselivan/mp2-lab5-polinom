@@ -1,6 +1,9 @@
 #pragma once
+#include <iostream>
+
 template <class T>
 class TNode{
+public:
 	T value;
 	TNode* pNext;
 
