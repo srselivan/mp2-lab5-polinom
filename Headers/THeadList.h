@@ -1,17 +1,18 @@
 #pragma once
 #include "TList.h"
-#include "TMonom.h"
+
+using namespace std;
 
 template <class T>
 class THeadList :
-    public TList<TMonom>
+    public TList<T>
 {
 protected:
     TNode<T>* pHead;
 
 public:
     THeadList() {
-        pHead = new TNode<T>;
+        pHead = new TNode<T>();
         pHead->pNext = pHead;
         pStop = pHead;
         pLast = pFirst = pHead;
@@ -29,7 +30,7 @@ public:
         delete pHead;
     }
 
-    void InsFirst(T val) {
+    void InsFirst(const T& val) {
         TList::InsFirst(val);
         pHead->pNext = pFirst;
     }

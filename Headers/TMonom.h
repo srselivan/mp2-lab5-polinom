@@ -6,7 +6,9 @@ public:
 	double coef;
 	int x, y, z;
 
-	TMonom(int x, int y, int z, double coef = 1) : x(x), y(y), z(z), coef(coef) {}
+	TMonom() : x(0), y(0), z(-1), coef(0) {}
+
+	TMonom(int x, int y, int z, double coef) : x(x), y(y), z(z), coef(coef) {}
 
 	TMonom& operator+(const TMonom& m) const {
 		TMonom result(*this);
@@ -37,7 +39,7 @@ public:
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const TMonom& m) {
-		os << m.coef << " x: " << m.x << " y: " << m.y << " z: " << m.z << std::endl;
+		os << m.coef << " *x^" << m.x << "*y^" << m.y << "*z^" << m.z << std::endl;
 		return os;
 	}
 

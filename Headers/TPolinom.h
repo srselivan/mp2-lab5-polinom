@@ -1,12 +1,13 @@
 #pragma once
 #include "THeadList.h"
+#include "TMonom.h"
 
 class TPolinom :
     public THeadList<TMonom>
 {
 public:
     TPolinom() {
-        TMonom m(0, 0, -1);
+        TMonom m(0, 0, 0, -1);
         pHead->value = m;
     }
 
@@ -27,13 +28,25 @@ public:
                 if (pCurr->value.coef == 0) {
                     DelCurr();
                 }
-                break;
+                return;
             }
             if (pCurr->value < m) {
                 InsCurr(m);
-                break;
+                return;
             }
         }
+        InsFirst(m);
+    }
+
+    TPolinom operator=(TPolinom& p)
+    {
+        for (Reset(); !(IsEnd()); GoNext()) {
+            DelCurr();
+        }
+        for (p.Reset(); !(p.IsEnd()); p.GoNext()) {
+            AddMonom(p.GetCurrVal());
+        }
+        return *this;
     }
 
     TPolinom operator+ (TPolinom& p) {
@@ -61,5 +74,31 @@ public:
 		}
 		return result;
     }
+
+	TPolinom operator* (const double coef) {
+        if (coef == 0) { 
+            return TPolinom(); 
+        }
+		TPolinom result = *this;
+        for (result.Reset(); !result.IsEnd(); result.GoNext()) {
+            result.pCurr->value.coef *= coef;
+        }
+		return result;
+	}
+
+	friend std::ostream& operator<<(std::ostream& os, TPolinom& p)
+	{
+		if (p.len == 0)
+			return os << 0;
+        for (p.Reset(); !p.IsEnd(); p.GoNext()) {
+            if (p.pCurr->pNext == p.pStop) {
+                os << p.GetCurrVal();
+                break;
+            }
+            os << p.GetCurrVal() << "+";
+        }
+		return os;
+	}
+
 };
 
