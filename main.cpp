@@ -5,21 +5,33 @@ using namespace std;
 
 void main() {
 	TPolinom classObj;
-	/*classObj.AddMonom(TMonom(1, 1, 1, 1));
-	classObj.AddMonom(TMonom(1, 2, 1, 1));
-	classObj.AddMonom(TMonom(105, 2, 9, 1));
-	classObj.AddMonom(TMonom(504, 2, 3, 3));
-	cout << classObj << endl;
+	TMonom m;
+
+	cout << "classObj 1 \nmonom 1: " << endl;
+	cin >> m;
+	classObj.AddMonom(m);
+
+	cout << "monom 2: " << endl;
+	cin >> m;
+	classObj.AddMonom(m);
+
+	cout << "monom 3: " << endl;
+	cin >> m;
+	classObj.AddMonom(m);
 
 	TPolinom classObj1;
-	classObj1.AddMonom(TMonom(1, 1, 1, 1));
-	classObj1.AddMonom(TMonom(-1, 2, 1, 1));
-	classObj1.AddMonom(TMonom(-105, 2, 9, 1));
-	classObj1.AddMonom(TMonom(5, 2, 3, 3));
-	cout << classObj1 << endl;
+	cout << "classObj 2 \nmonom 1: " << endl;
+	cin >> m;
+	classObj1.AddMonom(m);
 
-	classObj = classObj1 + classObj;*/
-	TMonom m(1, 1, 1, 1);
-	classObj.AddMonom(m);
-	cout << classObj.ToString();
+	cout << "monom 2: " << endl;
+	cin >> m;
+	classObj1.AddMonom(m);
+
+	cout << "monom 3: " << endl;
+	cin >> m;
+	classObj1.AddMonom(m);
+
+	classObj = classObj + classObj1;
+	cout << classObj;
 }
