@@ -1,6 +1,7 @@
 #pragma once
 #include "THeadList.h"
 #include "TMonom.h"
+#include <string>
 
 class TPolinom :
     public THeadList<TMonom>
@@ -18,6 +19,7 @@ public:
     }
 
     void AddMonom(const TMonom m) {
+        if (m.coef == 0) return;
         if (pLast->value > m) {
             InsLast(m);
             return;
@@ -38,13 +40,15 @@ public:
         InsFirst(m);
     }
 
-    TPolinom operator=(TPolinom& p)
-    {
-        for (Reset(); !(IsEnd()); GoNext()) {
-            DelCurr();
+    TPolinom operator=(TPolinom& p) {
+        p.Reset();
+        Reset();
+        while (!IsEnd()) { 
+            DelCurr(); 
         }
-        for (p.Reset(); !(p.IsEnd()); p.GoNext()) {
-            AddMonom(p.GetCurrVal());
+        while (!p.IsEnd()) { 
+            AddMonom(p.GetCurrVal()); 
+            p.GoNext();
         }
         return *this;
     }
@@ -85,6 +89,23 @@ public:
         }
 		return result;
 	}
+
+    std::string ToString() {
+        std::string result = "";
+
+        if (len == 0)
+            return result;
+        for (Reset(); !IsEnd(); GoNext()) {
+            result += to_string((int)GetCurrVal().coef)
+                + "*x^" + to_string(GetCurrVal().x)
+                + "*y^" + to_string(GetCurrVal().y)
+                + "*z^" + to_string(GetCurrVal().z);
+            if (pCurr->pNext != pStop) {
+                result += '+';
+            }
+        }
+        return result;
+    }
 
 	friend std::ostream& operator<<(std::ostream& os, TPolinom& p)
 	{

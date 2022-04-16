@@ -8,7 +8,7 @@ public:
 
 	TMonom() : x(0), y(0), z(-1), coef(0) {}
 
-	TMonom(int x, int y, int z, double coef) : x(x), y(y), z(z), coef(coef) {}
+	TMonom(double coef, int x, int y, int z) : x(x), y(y), z(z), coef(coef) {}
 
 	TMonom& operator+(const TMonom& m) const {
 		TMonom result(*this);
@@ -17,7 +17,7 @@ public:
 	}
 
 	bool operator==(const TMonom& m) const {
-		return (m.x == x && m.y == y && m.z == z && m.coef == m.coef);
+		return (m.x == x && m.y == y && m.z == z);
 	}
 
 	bool operator>(const TMonom& m) const {
@@ -30,7 +30,6 @@ public:
 		if (z > m.z) return true;
 		if (z < m.z) return false;
 
-		if (coef > m.coef) return true;
 		return false;
 	}
 
@@ -39,7 +38,7 @@ public:
 	}
 
 	friend std::ostream& operator<<(std::ostream& os, const TMonom& m) {
-		os << m.coef << " *x^" << m.x << "*y^" << m.y << "*z^" << m.z << std::endl;
+		os << m.coef << "*x^" << m.x << "*y^" << m.y << "*z^" << m.z;
 		return os;
 	}
 

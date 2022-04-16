@@ -145,6 +145,7 @@
     <ClCompile Include="test_main.cpp" />
     <ClCompile Include="test_theadlist.cpp" />
     <ClCompile Include="test_tlist.cpp" />
+    <ClCompile Include="test_tpolinom.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gtest.h" />

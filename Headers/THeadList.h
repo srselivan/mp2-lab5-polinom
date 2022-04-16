@@ -21,14 +21,6 @@ public:
     }
 
     ~THeadList() {
-        /*pCurr = pFirst;
-        while (pCurr != pStop) {
-            pPrev = pCurr;
-            pCurr = pCurr->pNext;
-            delete pPrev;
-        }
-        delete pHead;*/
-
         while (pFirst != pStop) {
             TNode<T>* node = pFirst;
             pFirst = pFirst->pNext;
