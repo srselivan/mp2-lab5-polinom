@@ -52,11 +52,11 @@ TEST(TPolinom, can_sub_polinom)
 	classObj.AddMonom(TMonom(-165, 5, 2, 1));
 
 	TPolinom classObj1;
-	classObj.AddMonom(TMonom(-1, 8, 4, 1));
-	classObj.AddMonom(TMonom(-24, 1, 6, 2));
-	classObj.AddMonom(TMonom(165, 5, 2, 1));
+	classObj1.AddMonom(TMonom(1, 8, 4, 1));
+	classObj1.AddMonom(TMonom(24, 1, 6, 2));
+	classObj1.AddMonom(TMonom(-165, 5, 2, 1));
 
-	classObj = classObj + classObj1*(-1);
+	classObj =classObj - classObj1;
 	ASSERT_EQ(classObj.ToString(), "");
 }
 

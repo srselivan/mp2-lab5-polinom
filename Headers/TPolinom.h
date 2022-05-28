@@ -79,6 +79,39 @@ public:
 		return result;
     }
 
+    TPolinom operator-(TPolinom& p)
+    {
+        TPolinom result = *this;
+        p.Reset();
+        result.Reset();
+        while (!p.IsEnd())
+        {
+            if (result.pCurr->value > p.pCurr->value)
+                result.GoNext();
+            else if (result.pCurr->value < p.pCurr->value)
+            {
+                result.InsCurr(p.pCurr->value);
+                result.pCurr->value.coef *= -1;
+                p.GoNext();
+            }
+            else
+            {
+                result.pCurr->value.coef -= p.pCurr->value.coef;
+                if (result.pCurr->value.coef != 0)
+                {
+                    result.GoNext();
+                    p.GoNext();
+                }
+                else
+                {
+                    result.DelCurr();
+                    p.GoNext();
+                }
+            }
+        }
+        return result;
+    }
+
 	TPolinom operator* (const double coef) {
         if (coef == 0) { 
             return TPolinom(); 
